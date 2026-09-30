@@ -1,0 +1,8 @@
+lieutenant = luitenant
+to forbid = verbieden
+technic = techniek
+to influence = beïnvloeden
+to bite = bijten
+title = titel
+cultural = cultureel
+young man = jongeman

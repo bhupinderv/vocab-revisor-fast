@@ -1,0 +1,44 @@
+.vocab-card {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #f3f3f3);
+}
+
+.vocab-card h2 {
+  color: #333;
+}
+
+kbd {
+  background-color: hsl(26, 86%, 46%);
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 0.9rem;
+}
+
+.accuracy-low {
+  color: #dc3545; /* red */
+}
+
+.accuracy-mid {
+  color: #ffc107; /* yellow */
+}
+
+.accuracy-high {
+  color: #198754; /* green */
+}
+
+.meaning-text p {
+  font-size: 1.5rem;       /* bigger text */
+  color: #6c757d;          /* light gray, Bootstrap’s muted color */
+  font-weight: 500;         /* optional: make it a bit bolder */
+  margin: 0;
+}
+
+.modal-content {
+  border-radius: 12px;
+}
+
+.list-group-item {
+  font-size: 1.1rem;
+}

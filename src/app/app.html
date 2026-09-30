@@ -1,0 +1,73 @@
+<div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
+
+  <!-- Title -->
+  <h1 class="mb-3 fw-bold">Vocabulary Revisor Lite</h1>
+
+  <!-- Mode toggle -->
+  <div class="mb-4 d-flex align-items-center gap-3">
+    <span class="badge text-bg-secondary fs-6">{{ modeLabel }}</span>
+    <button type="button" class="btn btn-outline-primary btn-sm" (click)="toggleReverse($event)">
+      ⇄ Reverse
+    </button>
+  </div>
+
+  <!-- Card -->
+  <div *ngIf="words.length > 0" class="card shadow-lg text-center p-4 vocab-card">
+    <h2 class="display-5 fw-semibold mb-3">
+      {{ promptText }}
+    </h2>
+  
+    <div *ngIf="showMeaning" class="mt-3 meaning-text">
+      <p>
+        <strong>{{ reverseMode ? 'Dutch' : 'English' }}:</strong> {{ answerText }}
+      </p>
+    </div>
+  </div>
+  
+
+  <!-- Stats -->
+  <div class="mt-4 text-center">
+    <p class="mb-1">
+      <strong>Progress:</strong> {{ currentIndex + 1 }} / {{ words.length }}
+    </p>
+
+    <p class="mb-1">
+      <strong>Correct:</strong> {{ correctCount }}
+      |
+      <strong>Wrong:</strong> {{ wrongCount }}
+    </p>
+
+    <p class="fs-5 fw-semibold" [ngClass]="accuracyClass">
+      Accuracy: {{ accuracy }}%
+    </p>
+  </div>
+
+  <p class="text-muted mt-4">
+    Press <kbd>Enter</kbd> to {{ showMeaning ? 'mark correct' : 'show meaning' }},
+    <kbd>Space</kbd> to mark wrong
+  </p>
+</div>
+
+<!-- Wrong Words Modal -->
+<div class="modal fade show" tabindex="-1" [ngClass]="{'d-block': showWrongModal}" style="background-color: rgba(0,0,0,0.5);" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title">Final result {{ roundAccuracy }}%. Words You Got Wrong ❌</h5>
+        <button type="button" class="btn-close" (click)="showWrongModal = false"></button>
+      </div>
+      <div class="modal-body" style="max-height: 300px; overflow-y: auto;">
+        <ul class="list-group">
+          <li *ngFor="let w of wrongWordsList" class="list-group-item">
+            {{ reverseMode ? w.meaning + ' = ' + w.word : w.word + ' = ' + w.meaning }}
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="showWrongModal = false">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
